@@ -1,0 +1,842 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated theme to ensure pure white background with better contrast */
+  --background: 255 255 255; /* Pure white background using RGB values */
+  --foreground: 0 0 0; /* Pure black text */
+  --card: 255 255 255; /* White card backgrounds */
+  --card-foreground: 0 0 0; /* Black text on cards */
+  --popover: 255 255 255; /* White popover */
+  --popover-foreground: 0 0 0; /* Black text on popover */
+  --primary: 135 206 235; /* Sky blue primary */
+  --primary-foreground: 0 0 0; /* Black text on sky blue */
+  --secondary: 248 252 255; /* Very light sky blue secondary */
+  --secondary-foreground: 0 0 0; /* Black text on secondary */
+  --muted: 248 252 255; /* Very light sky blue muted */
+  --muted-foreground: 64 64 64; /* Dark gray text */
+  --accent: 135 206 235; /* Sky blue accent */
+  --accent-foreground: 0 0 0; /* Black text on accent */
+  --destructive: 220 38 127;
+  --destructive-foreground: 255 255 255;
+  --warning: 245 158 11;
+  --warning-foreground: 0 0 0;
+  --success: 34 197 94;
+  --success-foreground: 255 255 255;
+  --border: 135 206 235; /* Sky blue borders */
+  --input: 255 255 255; /* White inputs with sky blue borders */
+  --ring: 135 206 235; /* Sky blue focus ring */
+  --chart-1: 135 206 235;
+  --chart-2: 34 197 94;
+  --chart-3: 245 158 11;
+  --chart-4: 220 38 127;
+  --chart-5: 87 139 204;
+  --radius: 0.75rem;
+  --sidebar: 255 255 255; /* White sidebar */
+  --sidebar-foreground: 0 0 0; /* Black sidebar text */
+  --sidebar-primary: 135 206 235;
+  --sidebar-primary-foreground: 0 0 0;
+  --sidebar-accent: 248 252 255;
+  --sidebar-accent-foreground: 0 0 0;
+  --sidebar-border: 135 206 235;
+  --sidebar-ring: 135 206 235;
+}
+
+.dark {
+  /* Dark theme also updated to maintain sky blue accents */
+  --background: 15 23 42;
+  --foreground: 248 250 252;
+  --card: 30 41 59;
+  --card-foreground: 248 250 252;
+  --popover: 30 41 59;
+  --popover-foreground: 248 250 252;
+  --primary: 135 206 235;
+  --primary-foreground: 15 23 42;
+  --secondary: 51 65 85;
+  --secondary-foreground: 248 250 252;
+  --muted: 51 65 85;
+  --muted-foreground: 148 163 184;
+  --accent: 87 139 204;
+  --accent-foreground: 248 250 252;
+  --destructive: 220 38 127;
+  --destructive-foreground: 248 250 252;
+  --warning: 245 158 11;
+  --warning-foreground: 15 23 42;
+  --success: 34 197 94;
+  --success-foreground: 15 23 42;
+  --border: 51 65 85;
+  --input: 51 65 85;
+  --ring: 135 206 235;
+  --chart-1: 87 139 204;
+  --chart-2: 34 197 94;
+  --chart-3: 245 158 11;
+  --chart-4: 220 38 127;
+  --chart-5: 135 206 235;
+  --sidebar: 15 23 42;
+  --sidebar-foreground: 248 250 252;
+  --sidebar-primary: 135 206 235;
+  --sidebar-primary-foreground: 15 23 42;
+  --sidebar-accent: 51 65 85;
+  --sidebar-accent-foreground: 248 250 252;
+  --sidebar-border: 51 65 85;
+  --sidebar-ring: 135 206 235;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
+  --color-popover: rgb(var(--popover));
+  --color-popover-foreground: rgb(var(--popover-foreground));
+  --color-primary: rgb(var(--primary));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+  --color-destructive: rgb(var(--destructive));
+  --color-destructive-foreground: rgb(var(--destructive-foreground));
+  --color-warning: rgb(var(--warning));
+  --color-warning-foreground: rgb(var(--warning-foreground));
+  --color-success: rgb(var(--success));
+  --color-success-foreground: rgb(var(--success-foreground));
+  --color-border: rgb(var(--border));
+  --color-input: rgb(var(--input));
+  --color-ring: rgb(var(--ring));
+  --color-chart-1: rgb(var(--chart-1));
+  --color-chart-2: rgb(var(--chart-2));
+  --color-chart-3: rgb(var(--chart-3));
+  --color-chart-4: rgb(var(--chart-4));
+  --color-chart-5: rgb(var(--chart-5));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: rgb(var(--sidebar));
+  --color-sidebar-foreground: rgb(var(--sidebar-foreground));
+  --color-sidebar-primary: rgb(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: rgb(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: rgb(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: rgb(var(--sidebar-accent-foreground));
+  --color-sidebar-border: rgb(var(--sidebar-border));
+  --color-sidebar-ring: rgb(var(--sidebar-ring));
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  /* Force white background and black text throughout the app */
+  html {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  /* Ensure all containers have proper colors */
+  .min-h-screen {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  /* Style cards with sky blue borders and white backgrounds */
+  .bg-card {
+    background-color: rgb(255, 255, 255) !important;
+    border: 2px solid rgb(135, 206, 235) !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  /* Ensure all text elements are black */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  div,
+  label {
+    color: rgb(0, 0, 0) !important;
+  }
+  /* Style buttons with sky blue backgrounds */
+  .bg-primary {
+    background-color: rgb(135, 206, 235) !important;
+    color: rgb(0, 0, 0) !important;
+  }
+}
+
+/* Enhanced 3D animations and interactive effects */
+@keyframes pulse-health {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float-3d {
+  0%,
+  100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotateX(5deg) rotateY(2deg);
+  }
+  66% {
+    transform: translateY(-5px) rotateX(-2deg) rotateY(-5deg);
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(-100%) scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0%) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) scaleX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes float-particle {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(90deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px) rotate(180deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px) rotate(270deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-orb {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+@keyframes rotate-3d {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  33% {
+    transform: rotateX(10deg) rotateY(120deg) rotateZ(0deg);
+  }
+  66% {
+    transform: rotateX(-5deg) rotateY(240deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px currentColor;
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 40px currentColor, 0 0 60px currentColor;
+    filter: brightness(1.2);
+  }
+}
+
+.animate-pulse-health {
+  animation: pulse-health 2s ease-in-out infinite;
+}
+
+.animate-float-3d {
+  animation: float-3d 4s ease-in-out infinite;
+}
+
+.animate-data-flow {
+  animation: data-flow 2s ease-in-out infinite;
+}
+
+.animate-rotate-3d {
+  animation: rotate-3d 20s linear infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+/* Interactive hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+.hover-glow {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px currentColor;
+  filter: brightness(1.1);
+}
+
+.hover-slide {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-slide:hover {
+  transform: translateX(10px);
+}
+
+.hover-bounce {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-bounce:hover {
+  transform: translateY(-5px);
+  animation: bounce-in 0.6s ease-out;
+}
+
+/* Interactive button effects */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Loading states and micro-interactions */
+.loading-spinner {
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-ring-animation 2s ease-out infinite;
+}
+
+@keyframes pulse-ring-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Interactive form elements */
+.input-focus {
+  transition: all 0.3s ease-in-out;
+}
+
+.input-focus:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px rgba(var(--primary), 0.1);
+}
+
+.checkbox-bounce input:checked + label {
+  animation: bounce-in 0.3s ease-out;
+}
+
+/* Card interactions */
+.card-interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  transform: translateY(-8px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-interactive:active {
+  transform: translateY(-4px) rotateX(2deg);
+  transition: all 0.1s ease-out;
+}
+
+/* Tab animations */
+.tab-slide-enter {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.tab-slide-exit {
+  animation: slide-in-right 0.3s ease-out reverse;
+}
+
+/* Notification and alert animations */
+.alert-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.success-bounce {
+  animation: bounce-in 0.6s ease-out;
+}
+
+.error-pulse {
+  animation: pulse-health 0.5s ease-in-out 3;
+}
+
+/* Data visualization animations */
+.chart-draw {
+  animation: chart-draw-animation 2s ease-out;
+}
+
+@keyframes chart-draw-animation {
+  0% {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
+
+.counter-up {
+  animation: counter-up-animation 2s ease-out;
+}
+
+@keyframes counter-up-animation {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile-specific interactions */
+@media (max-width: 768px) {
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  .card-interactive:hover {
+    transform: none;
+  }
+
+  .mobile-tap {
+    transition: all 0.1s ease-out;
+  }
+
+  .mobile-tap:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+.focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Interactive scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Advanced interactive animations and micro-interactions */
+@keyframes ripple-effect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-up {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes morphing-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes loading-dots {
+  0%,
+  20% {
+    color: transparent;
+    text-shadow: 0.25em 0 0 transparent, 0.5em 0 0 transparent;
+  }
+  40% {
+    color: currentColor;
+    text-shadow: 0.25em 0 0 transparent, 0.5em 0 0 transparent;
+  }
+  60% {
+    text-shadow: 0.25em 0 0 currentColor, 0.5em 0 0 transparent;
+  }
+  80%,
+  100% {
+    text-shadow: 0.25em 0 0 currentColor, 0.5em 0 0 currentColor;
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    width: 0%;
+    background-position: 0 0;
+  }
+  100% {
+    width: 100%;
+    background-position: 40px 0;
+  }
+}
+
+@keyframes notification-slide {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Interactive animation classes */
+.animate-ripple {
+  animation: ripple-effect 0.6s ease-out;
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s ease-out;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-typing {
+  animation: typing 2s steps(40, end);
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+.animate-morphing-gradient {
+  background: linear-gradient(-45deg, var(--primary), var(--accent), var(--success), var(--warning));
+  background-size: 400% 400%;
+  animation: morphing-gradient 4s ease infinite;
+}
+
+.animate-loading-dots::after {
+  content: "...";
+  animation: loading-dots 1.5s infinite;
+}
+
+.animate-progress-bar {
+  background: linear-gradient(
+    45deg,
+    transparent 33%,
+    rgba(255, 255, 255, 0.1) 33%,
+    rgba(255, 255, 255, 0.1) 66%,
+    transparent 66%
+  );
+  background-size: 40px 100%;
+  animation: progress-bar 2s linear infinite;
+}
+
+.animate-notification-slide {
+  animation: notification-slide 4s ease-in-out;
+}
+
+/* Glassmorphism effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Particle system */
+.particle-system {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle-system::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(2px 2px at 20px 30px, currentColor, transparent),
+    radial-gradient(2px 2px at 40px 70px, currentColor, transparent),
+    radial-gradient(1px 1px at 90px 40px, currentColor, transparent),
+    radial-gradient(1px 1px at 130px 80px, currentColor, transparent),
+    radial-gradient(2px 2px at 160px 30px, currentColor, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: float-particle 20s linear infinite;
+  opacity: 0.1;
+  pointer-events: none;
+}
